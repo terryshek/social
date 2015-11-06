@@ -4,16 +4,32 @@
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="./app/css/main.css"/>
     <script src="./node_modules/angular/angular.min.js"></script>
     <script src="./node_modules/ui-router/release/angular-ui-router.js"></script>
     <script src="app/app.js"></script>
+    <script src="app/signup/signup-controller.js"></script>
+    <script src="app/navigation/navigation-controller.js"></script>
+    <script src="app/profile/edit-profile-controller.js"></script>
+    <!--library -->
+    <script src="node_modules/ng-file-upload/dist/ng-file-upload.js"></script>
+    <script src="node_modules/ng-file-upload/dist/ng-file-upload-all.js"></script>
+    <script src="node_modules/ng-file-upload/dist/ng-file-upload-shim.js"></script>
 </head>
-<body>
-
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
-            Testing the test
+<nav class="navbar navbar-default navbar-fixed-top" ng-controller="NavigatioinController">
+    <div class="container">
+        <div ng-show="!loggedIn">
+            <input type="text" ng-model="login.email">
+            <input type="password" ng-model="login.password">
+            <button ng-click="logUserin()" >Login</button>
+            <a ui-sref="signUp">Create an account !</a>
         </div>
-    </nav>
+    </div>
+    <div ng-show="loggedIn" class="text-center">
+        edit profile
+    </div>
+</nav>
+<body>
+<div ui-view></div>
 </body>
 </html>
